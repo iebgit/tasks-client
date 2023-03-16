@@ -1,0 +1,2 @@
+# tasks-client remote remove origin https://github.com/iebgit/tasks-client.git git push -u origin main
+# tasks-client remote remove origin https://github.com/iebgit/tasks.git git push -u origin main

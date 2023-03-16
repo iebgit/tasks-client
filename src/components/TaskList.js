@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import moment from "moment";
 
 const TaskList = () => {
   const [tasks, setTasks] = useState([]);
@@ -25,6 +26,7 @@ const TaskList = () => {
       <table className="table">
         <thead>
           <tr>
+            <th>Date</th>
             <th>Title</th>
             <th>Description</th>
             <th>Completed</th>
@@ -34,6 +36,7 @@ const TaskList = () => {
         <tbody>
           {tasks.map((task) => (
             <tr key={task._id}>
+              <td>{new Date(task.date).toLocaleString()}</td>
               <td>
                 <strong>{task.title}</strong>
               </td>
