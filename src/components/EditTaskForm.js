@@ -7,7 +7,7 @@ const EditTaskForm = () => {
   const [description, setDescription] = useState("");
   const [completed, setCompleted] = useState(false);
   const { id } = useParams();
-  const history = useNavigate();
+  const nav = useNavigate();
 
   useEffect(() => {
     axios
@@ -28,7 +28,7 @@ const EditTaskForm = () => {
         description,
         completed,
       })
-      .then(() => history("/"))
+      .then(() => nav("/"))
       .catch((err) => console.log(err));
   };
 

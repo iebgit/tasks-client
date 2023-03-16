@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const CreateTaskForm = ({ onAdd }) => {
   const [newTask, setNewTask] = useState({ title: "", description: "" });
-  const history = useNavigate();
+  const nav = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +17,7 @@ const CreateTaskForm = ({ onAdd }) => {
     try {
       await axios.post("http://localhost:5000/tasks", newTask);
       setNewTask({ title: "", description: "" });
-      history("/");
+      nav("/");
     } catch (error) {
       console.log(error);
     }
@@ -26,6 +26,7 @@ const CreateTaskForm = ({ onAdd }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
+        <h1>Create Task</h1>
         <label>Title:</label>
         <br />
         <input

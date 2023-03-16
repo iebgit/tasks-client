@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import TaskList from "./TaskList";
-import CreateTaskForm from "./CreateTaskForm";
-import EditTaskForm from "./EditTaskForm";
 
 const TaskListPage = () => {
   const [tasks, setTasks] = useState([]);
@@ -20,18 +18,6 @@ const TaskListPage = () => {
     fetchTasks();
   }, []);
 
-  const handleAddTask = (newTask) => {
-    setTasks([...tasks, newTask]);
-  };
-
-  const handleEditTask = (updatedTask) => {
-    const updatedTasks = tasks.map((task) =>
-      task._id === updatedTask._id ? updatedTask : task
-    );
-    setTasks(updatedTasks);
-    setEditingTask(null);
-  };
-
   const handleDeleteTask = async (taskId) => {
     try {
       await axios.delete(`http://localhost:5000/tasks/${taskId}`);
@@ -45,10 +31,6 @@ const TaskListPage = () => {
   const handleEditButtonClick = (taskId) => {
     const taskToEdit = tasks.find((task) => task._id === taskId);
     setEditingTask(taskToEdit);
-  };
-
-  const handleCancelButtonClick = () => {
-    setEditingTask(null);
   };
 
   return (

@@ -11,6 +11,7 @@ const Task = ({ task, onUpdate, onDelete }) => {
 
   return (
     <div>
+      <h1>Edit Task</h1>
       <h2>{task.title}</h2>
       <p>{task.description}</p>
       <input
